@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Report a New Bug</h2>
+<form method="post" action="/report_bug">
+    <label>Title:</label><br>
+    <input type="text" name="title" required><br><br>
+    <label>Description:</label><br>
+    <textarea name="description" rows="5" required></textarea><br><br>
+    <label>Website:</label><br>
+    <select name="website_id" required>
+        {% for site in websites %}
+        <option value="{{ site.website_id }}">{{ site.name }}</option>
+        {% endfor %}
+    </select><br><br>
+    <label>Priority:</label><br>
+    <select name="priority">
+        <option value="Low">Low</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="High">High</option>
+        <option value="Critical">Critical</option>
+    </select><br><br>
+    <button type="submit">Submit Bug</button>
+</form>
+{% endblock %}
