@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="dashboard-grid-intro">
+        <img src="/static/images/pexels-kevin-ku-92347-577585.jpg" alt="Intro Background">
+        <div class="text-overlay">
+            <h2>Welcome, {{ user.username }} ({{ user.role }} user)</h2>
+            <p>
+                Welcome to the Temenos Bug Reporting System. Please report issues with full context including environment,
+                steps to reproduce, and screenshots where possible. The more detail you provide, the faster we can help.
+            </p>
+        </div>
+    </div>
+    <a href="/report_bug" class="dashboard-section">
+        <div class="dashboard-grid">
+            <div class="dashboard-image-container grid-item">
+                <img src="/static/images/pexels-ekamelev-1114318.jpg" alt="Report a Bug">
+                <div class="dashboard-title">Report a Bug</div>
+            </div>
+            <div class="grid-item">
+                <p>Use this page to submit detailed bug reports for Temenos websites. Include all useful context like browser, user steps, and system version.</p>
+            </div>
+        </div>
+    </a>
+    <a href="/bugs" class="dashboard-section">
+        <div class="dashboard-grid">
+            <div class="grid-item">
+                <p>Explore, filter, and sort through all reported bugs. This page helps you check if issues are known and track their resolution progress.</p>
+            </div>
+            <div class="dashboard-image-container grid-item">
+                <img src="/static/images/pexels-mart-production-7550298.jpg" alt="Bug Tracker">
+                <div class="dashboard-title">Bug Tracker</div>
+            </div>
+        </div>
+    </a>
+    {% if user.role == 'admin' %}
+        <a href="/manage_websites" class="dashboard-section">
+            <div class="dashboard-grid">
+                <div class="dashboard-image-container grid-item">
+                    <img src="/static/images/pexels-vladbagacian-1604024.jpg" alt="Manage Websites">
+                    <div class="dashboard-title">Manage Websites</div>
+                </div>
+                <div class="grid-item">
+                    <p>Admins can manage which websites are listed. Add, edit, or remove entries so bugs are tied to the correct properties.</p>
+                </div>
+            </div>
+        </a>
+        <a href="/manage_users" class="dashboard-section">
+            <div class="dashboard-grid">
+                <div class="grid-item">
+                    <p>Control user access: promote users to admins or remove regular users if needed. Ensure the right people have the right permissions.</p>
+                </div>
+                <div class="dashboard-image-container grid-item">
+                    <img src="/static/images/pexels-camcasey-1687093.jpg" alt="Manage Users">
+                    <div class="dashboard-title">Manage Users</div>
+                </div>
+            </div>
+        </a>
+    {% endif %}
+{% endblock %}
