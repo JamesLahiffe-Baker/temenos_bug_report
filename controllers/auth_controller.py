@@ -38,7 +38,7 @@ def register_form(
     #First user gets admin privileges
     if not user_exists:
         message = (
-            "You are the first user. You shall become the admin of this site."
+            "You are the first user. You shall become the admin of this site. "
             "All other users will become regular users unless you alter their privileges."
         )
         print("[INFO] First user detected – assigning admin role suggestion")
