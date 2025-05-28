@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bug Details</h2>
+<div class="bug-detail-container">
+    <p class="bug-line"><strong>Title:</strong> {{ bug.title }}</p>
+    <p class="bug-line"><strong>Description:</strong> {{ bug.description }}</p>
+</div>
+<form method="post" action="/bugs/{{ bug.bug_id }}/update">
+    {% if user and user.role == 'admin' %}
+    <p><strong>Status:</strong>
+        <select name="status" required>
+            <option value="Open" {% if bug.status == 'Open' %}selected{% endif %}>Open</option>
+            <option value="In Progress" {% if bug.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+            <option value="Resolved" {% if bug.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+        </select>
+    </p>
+    <p><strong>Priority:</strong>
+        <select name="priority" required>
+            <option value="Low" {% if bug.priority == 'Low' %}selected{% endif %}>Low</option>
+            <option value="Medium" {% if bug.priority == 'Medium' %}selected{% endif %}>Medium</option>
+            <option value="High" {% if bug.priority == 'High' %}selected{% endif %}>High</option>
+        </select>
+    </p>
+    <button type="submit">Update Bug</button>
+    {% else %}
+    <p><strong>Status:</strong> {{ bug.status }}</p>
+    <p><strong>Priority:</strong> {{ bug.priority }}</p>
+    {% endif %}
+</form>
+<div class="bug-detail-container">
+    <p><strong>Website:</strong> {{ bug.website.name }}</p>
+    <p><strong>Reported by:</strong> {{ bug.reporter.username }}</p>
+    <p><strong>Reported on:</strong> {{ bug.reported_at.strftime('%Y-%m-%d %H:%M') }}</p>
+</div>
+<hr>
+<h3>Comments</h3>
+<ul class="comment-list">
+    {% for comment in bug.comments %}
+    <li class="{% if comment.user.role == 'admin' %}admin-comment{% else %}user-comment{% endif %}">
+        {{ comment.comment }}<br>
+        <small>
+            Posted by <strong>{{ comment.user.username }}</strong> ({{ comment.user.role }})
+            on {{ comment.created_at.strftime('%Y-%m-%d %H:%M') }}
+        </small>
+    </li>
+    {% else %}
+    <p>No comments yet.</p>
+    {% endfor %}
+</ul>
+<h3>Add a Comment</h3>
+<form method="post" action="/bugs/{{ bug.bug_id }}/comment">
+    <textarea name="comment" rows="4" required></textarea><br><br>
+    <button type="submit">Submit Comment</button>
+</form>
+{% endblock %}
