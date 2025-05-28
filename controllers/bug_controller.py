@@ -62,7 +62,7 @@ def report_bug(
         db.add(bug)
         db.commit()
         print(f"[SUCCESS] Bug reported by user_id {user_id}: {title}")
-        return RedirectResponse("/dashboard", status_code=303)
+        return RedirectResponse("/bugs", status_code=303)
     except Exception as e:
         db.rollback()
         print(f"[ERROR] Failed to report bug: {str(e)}")
