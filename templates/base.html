@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Temenos Bug Tracker</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Temenos Bug Reporting System</h1>
+            {% if request.url.path not in ["/", "/register"] %}
+                <nav class="navbar">
+                    {% if request.url.path != "/dashboard" %}
+                        {% if user and user.role == 'admin' %}
+                            <a href="/dashboard" class="nav-button">Dashboard</a>
+                            <a href="/report_bug" class="nav-button">Report Bug</a>
+                            <a href="/bugs" class="nav-button">Bug Tracker</a>
+                            <a href="/manage_websites" class="nav-button">Manage Websites</a>
+                            <a href="/manage_users" class="nav-button">Manage Users</a>
+                        {% elif user and user.role != 'admin' %}
+                            <a href="/dashboard" class="nav-button">Dashboard</a>
+                            <a href="/report_bug" class="nav-button">Report Bug</a>
+                            <a href="/bugs" class="nav-button">Bug Tracker</a>
+                        {% endif %}
+                    {% endif %}
+                    {% if user %}
+                        <div class="logout-wrapper">
+                            <a href="/logout" class="nav-button logout-button">Logout</a>
+                        </div>
+                    {% endif %}
+                </nav>
+            {% endif %}
+            <hr>
+        </header>
+        <main>
+            {% if error %}
+            <div class="error-message">
+                <p class="error-message">{{ error }}</p>
+            </div>
+            {% endif %}
+            {% block content %}
+            <!-- Page-specific content will go here -->
+            {% endblock %}
+        </main>
+        <footer>
+            <p class="footer-text">&copy; 2025 Temenos. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
