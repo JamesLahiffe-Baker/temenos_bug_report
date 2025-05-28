@@ -1,0 +1,445 @@
+/* ============================================
+   === GLOBAL STYLES (SHARED ACROSS PAGES) ===
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #f4f7fa; /* Softer Temenos background */
+    color: #222;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.7px;
+    color: #0072ce; /* Temenos blue */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* === Header/Footer === */
+header, footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #e6f2fb;
+    border-bottom: 2px solid #0072ce;
+}
+
+footer {
+    background-color: #e6f2fb;
+    border-top: 2px solid #0072ce;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-text {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* === Navbar Buttons === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.nav-button {
+    background-color: #0072ce;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 114, 206, 0.2);
+}
+
+.nav-button:hover {
+    background-color: #005fa3;
+}
+
+.logout-wrapper {
+    margin-left: auto;
+}
+
+/* =======================================
+   === LOGIN / REGISTER ===
+   ======================================= */
+
+form.login-box {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 114, 206, 0.15);
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.error-message {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.error-message p {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.center-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+}
+.center-link p {
+    margin: 15px;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* =======================================
+  === FORMS / INPUTS ===
+  ======================================= */
+form, .content-box {
+    background: #ffffff;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea, input[type=text] {
+    word-break: break-word;
+}
+
+/* =======================================
+   === BUTTONS ===
+   ======================================= */
+
+button {
+    background-color: #0072ce;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background-color: #005fa3;
+}
+
+button.delete-button {
+    background-color: #d9534f !important;
+    color: white !important;
+    border: none;
+    padding: 10px 16px;       /* Increase padding for height and width */
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;          /* Match general button font size */
+    width: 100%;              /* If you want full-width, or use auto for inline */
+    box-sizing: border-box;   /* Ensure padding is accounted for */
+    transition: background-color 0.2s ease;
+}
+
+button.delete-button:hover {
+    background-color: #c9302c !important; /* Darker red */
+}
+
+.make-admin-button {
+    background-color: #0072ce;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.make-admin-button:hover {
+    background-color: #005fa3;
+}
+
+.delete-button {
+    background-color: #d9534f;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
+
+select {
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.button-pair {
+    display: flex;
+    gap: 10px; /* spacing between buttons */
+    width: 100%;
+}
+
+.button-pair form {
+    flex: 1; /* Each button takes 50% */
+}
+
+/* =======================================
+   === BUG TRACKER / DETAILS PAGE ===
+   ======================================= */
+
+.bug-detail {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.bug-detail-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0;
+    padding: 1px 20px;
+    border-radius: 6px;
+}
+
+.bug-line {
+    display: block;
+    padding: 4px 0;
+    font-size: 16px;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    width: 100%;
+    max-width: 100%;
+}
+
+p.admin-message {
+    background-color: #e6ffe6;
+    border: 1px solid #55aa55;
+    padding: 10px;
+    color: #228822;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.comment-list {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  list-style-type: none;
+}
+
+.admin-comment,
+.user-comment {
+  padding: 12px;
+  margin: 12px auto;
+  border-left: 4px solid;
+  border-radius: 4px;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #e6ffed;
+}
+
+.admin-comment {
+  border-left-color: #228822;
+  background-color: #e6ffed;
+}
+
+.user-comment {
+  border-left-color: #0072ce;
+  background-color: #dceeff;
+}
+
+
+/* =======================================
+   === TABLES ===
+   ======================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #0072ce;
+    color: white;
+}
+
+table td, table th, p, li {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    max-width: 300px;
+}
+
+/* =======================================
+   === DASHBOARD GRID ===
+   ======================================= */
+
+.dashboard-grid-intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+
+.dashboard-grid-intro img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.dashboard-grid-intro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.text-overlay {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: 30% 50%;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+}
+
+.text-overlay h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  font-size: 3rem;
+}
+
+.text-overlay p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  font-weight: 1000;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    width: 100%;
+}
+
+.dashboard-grid img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  border: none;
+  background-color: lightblue;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-section {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dashboard-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.8em;
+    text-shadow: 2px 2px 4px black;
+    pointer-events: none;
+}
+
+.dashboard-image-container {
+    position: relative;
+    width: 100%;
+}
