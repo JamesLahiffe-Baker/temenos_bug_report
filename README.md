@@ -77,6 +77,29 @@ A FastAPI-based bug tracking system for managing website issues. This app allows
 
 ------------------------------------------------------------------------------
 
+## Dependencies
+
+This project relies on the following Python packages, listed in `requirements.txt`. They are essential for the FastAPI application, database operations, form handling, authentication, and rendering templates.
+
+Install them using:
+
+```bash
+pip install -r requirements.txt
+```
+
+| Package            | Purpose                                                                 |
+| ------------------ | ----------------------------------------------------------------------- |
+| `fastapi`          | Web framework for building APIs with Python                             |
+| `uvicorn`          | ASGI server to run FastAPI applications                                 |
+| `jinja2`           | Template engine for rendering HTML pages                                |
+| `sqlalchemy`       | ORM for database interactions                                           |
+| `python-multipart` | Enables form data parsing for file uploads and forms                    |
+| `bcrypt`           | Password hashing utility used by `passlib`                              |
+| `python-jose`      | Handling JWT (JSON Web Tokens) for secure session logic                 |
+| `passlib[bcrypt]`  | Secure password hashing via `CryptContext` used in authentication logic |
+
+------------------------------------------------------------------------------
+
 ## How to Run This App Locally
 
 ### 1. Clone the Repository
@@ -101,7 +124,7 @@ Then install the requirements:
 pip install -r requirements.txt
 ```
 
-### 3. Initialize the Database
+### 3. Initialise the Database
 
 This will create `app.db` using SQLite and the necessary tables:
 
