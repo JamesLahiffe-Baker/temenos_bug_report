@@ -105,8 +105,8 @@ pip install -r requirements.txt
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/bug-tracker.git
-cd bug-tracker
+git clone https://github.com/JamesLahiffe-Baker/temenos_bug_report.git
+cd temenos_bug_report
 ```
 
 ### 2. Install Dependencies
@@ -115,7 +115,7 @@ Make sure you are in a virtual environment (recommended):
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+source venv/bin/activate  #On Windows: venv\\Scripts\\activate
 ```
 
 Then install the requirements:
@@ -153,9 +153,9 @@ To deploy, ensure you include the following:
   ```
   uvicorn main:app --host 0.0.0.0 --port $PORT
   ```
-* Include `templates/` and `static/` directories
-* Replace SQLite with a production-grade DB (e.g. PostgreSQL)
-* Use environment variables for secrets and configs
+* Include `controllers/`, `templates/` and `static/` directories
+* Replace SQLite with a production-grade DB (e.g. PostgreSQL) if needs be
+* No environment variables for secrets and configs needed, but can be added
 
 ------------------------------------------------------------------------------
 
