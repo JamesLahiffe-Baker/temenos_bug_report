@@ -9,9 +9,11 @@ from controllers import (
     website_controller,
     user_controller
 )
+from database import Base, engine
 from seed import seed_database
 
 #Comment out if you don't wish to seed the database with values.
+Base.metadata.create_all(bind=engine)
 seed_database()
 
 #Init
