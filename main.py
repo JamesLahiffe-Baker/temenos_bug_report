@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from database import Base, engine
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
 from controllers import (
     auth_controller,
     dashboard_controller,
@@ -10,6 +9,10 @@ from controllers import (
     website_controller,
     user_controller
 )
+from seed import seed_database
+
+#Comment out if you don't wish to seed the database with values.
+seed_database()
 
 #Init
 Base.metadata.create_all(bind=engine)
