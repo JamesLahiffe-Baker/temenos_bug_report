@@ -25,7 +25,7 @@ def seed_database():
             "username": "JamesLahiffeBaker",
             "email": "james.lahiffe-baker@temenos.com",
             "password": "password",
-            "role": "regular"
+            "role": "admin"
         },
         {
             "username": "JoeCooks",
@@ -228,29 +228,69 @@ def seed_database():
                 reported_at=datetime.utcnow()
             ))
         db.commit()
-
+    
     #Seed BugComments
     if db.query(BugComment).count() < 10:
         bugs = db.query(BugReport).all()
         users = db.query(User).all()
-        comments = [
-            "Thanks, we'll investigate this shortly.",
-            "Can you confirm the browser and OS used?",
-            "Issue replicated. Raising a ticket with dev team.",
-            "Looks like a regression from last week's patch.",
-            "Try clearing your cache and reloading—still happens?",
-            "We’ve deployed a fix, please retest.",
-            "Not reproducible on staging. Can you retry?",
-            "Confirmed. UX team has been alerted.",
-            "Thanks for the detailed report, very helpful!",
-            "We're working on a hotfix, ETA tomorrow."
+        comments = [         
+            {
+                "bug": "1",
+                "comment": "Issue replicated. Raising a ticket with dev team.",
+                "user": "JamesLahiffeBaker"
+            },
+            {
+                "bug": "1",
+                "comment": "Looks like a regression from last week's patch.",
+                "user": "JamesLahiffeBaker"
+            },
+            {
+                "bug": "1",
+                "comment": "Thankyou, please let me know once the patch is implemented.",
+                "user": "BillyCurry"
+            },
+            {
+                "bug": "1",
+                "comment": "Try clearing your cache and reloading—still happens?",
+                "user": "JamesLahiffeBaker"
+            },
+            {
+                "bug": "2",
+                "comment": "We’ve deployed a fix, please retest.",
+                "user": "admin"
+            },
+            {
+                "bug": "2",
+                "comment": "Not reproducible on staging. Can you retry?",
+                "user": "admin"
+            },
+            {
+                "bug": "5",
+                "comment": "Confirmed. UX team has been alerted.",
+                "user": "JamesLahiffeBaker"
+            },
+            {
+                "bug": "6",
+                "comment": "Thanks for the detailed report, very helpful!",
+                "user": "admin"
+            },
+            {
+                "bug": "6",
+                "comment": "We're working on a hotfix, ETA tomorrow.",
+                "user": "admin"
+            },
+            {
+                "bug": "8",
+                "comment": "Thanks, we'll investigate this shortly.",
+                "user": "JamesLahiffeBaker"
+            }
         ]
-        for i in range(10):
-            comment = BugComment(
-                bug_id=bugs[i].bug_id,
-                comment=comments[i],
-                created_by_user_id=users[i % len(users)].user_id
-            )
-            db.add(comment)
+        for comment in comments:
+            commenter = db.query(User).filter(User.username == comment["user"]).first()
+            db.add(BugComment(
+                bug_id=bugs[comment["bug"]].bug_id,
+                comment=comment["comment"],
+                created_by_user_id=commenter.user_id
+            ))
         db.commit()
     db.close()
