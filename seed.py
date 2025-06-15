@@ -8,109 +8,125 @@ from datetime import datetime
 def seed_database():
     db: Session = SessionLocal()
     #Seed Users
-    db.add(User(
-        username=f"admin",
-        email=f"admin@temenos.com",
-        hashed_password=get_password_hash("admin"),
-        role="admin"
-    ))
-    db.add(User(
-        username=f"regular",
-        email=f"regular@temenos.com",
-        hashed_password=get_password_hash("regular"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"JamesLahiffeBaker",
-        email=f"james.lahiffe-baker@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"JoeCooks",
-        email=f"joe.cooks@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"BillyCurry",
-        email=f"billy.curry@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"KatySmith",
-        email=f"katy.smith@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"AlexConnor",
-        email=f"alex.connor@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"SarahCrumble",
-        email=f"sarah.crumble@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"AmyWright",
-        email=f"amy.wright@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
-    db.add(User(
-        username=f"NeelJosh",
-        email=f"neel.josh@temenos.com",
-        hashed_password=get_password_hash("password"),
-        role="regular"
-    ))
+    users=[
+        {
+            "username": "admin",
+            "email": "admin@temenos.com",
+            "password": "admin",
+            "role": "admin"
+        },
+        {
+            "username": "regular",
+            "email": "regular@temenos.com",
+            "password": "regular",
+            "role": "regular"
+        },
+        {
+            "username": "JamesLahiffeBaker",
+            "email": "james.lahiffe-baker@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "JoeCooks",
+            "email": "joe.cooks@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "BillyCurry",
+            "email": "billy.curry@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "KatySmith",
+            "email": "katy.smith@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "AlexConnor",
+            "email": "alex.connor@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "SarahCrumble",
+            "email": "sarah.crumble@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "AmyWright",
+            "email": "amy.wright@temenos.com",
+            "password": "password",
+            "role": "regular"
+        },
+        {
+            "username": "NeelJosh",
+            "email": "neel.josh@temenos.com",
+            "password": "password",
+            "role": "regular"
+        }
+    ]
+    for user in users:
+        db.add(User(
+            username=user["username"],
+            email=user["email"],
+            hashed_password=get_password_hash(user["password"]),
+            role=user["role"]
+        ))
     db.commit()
 
     # Seed Websites
-    db.add(Website(
-        name=f"People Space",
-        url=f"https://peoplespace.temenos.com"
-    ))
-    db.add(Website(
-        name=f"IT Service Desk",
-        url=f"https://itservicedesk.temenos.com"
-    ))
-    db.add(Website(
-        name=f"Uni-T",
-        url=f"https://temenosgroup.sharepoint.com/sites/Uni-T"
-    ))
-    db.add(Website(
-        name=f"EBiz",
-        url=f"https://ebiz.temenosgroup.com"
-    ))
-    db.add(Website(
-        name=f"Payroll Immedis",
-        url=f"https://portal.immedis.com"
-    ))
-    db.add(Website(
-        name=f"Yammer",
-        url=f"https://engage.cloud.microsoft/main/org/temenos.com"
-    ))
-    db.add(Website(
-        name=f"Knowledge Center",
-        url=f"https://tkc.temenos.com"
-    ))
-    db.add(Website(
-        name=f"Travel Application",
-        url=f"https://travel.temenos.com"
-    ))
-    db.add(Website(
-        name=f"T-Stars",
-        url=f"https://cloud.workhuman.com/microsites/t/home?client=temenos&setCAG=false"
-    ))
-    db.add(Website(
-        name=f"Currency Exchange",
-        url=f"https://www.xe.com"
-    ))
+    websites = [
+        {
+            "name": "People Space",
+            "url": "https://peoplespace.temenos.com"
+        },
+        {
+            "name": "IT Service Desk",
+            "url": "https://itservicedesk.temenos.com"
+        },
+        {
+            "name": "Uni-T",
+            "url": "https://temenosgroup.sharepoint.com/sites/Uni-T"
+        },
+        {
+            "name": "EBiz",
+            "url": "https://ebiz.temenosgroup.com"
+        },
+        {
+            "name": "Payroll Immedis",
+            "url": "https://portal.immedis.com"
+        },
+        {
+            "name": "Yammer",
+            "url": "https://engage.cloud.microsoft/main/org/temenos.com"
+        },
+        {
+            "name": "Knowledge Center",
+            "url": "https://tkc.temenos.com"
+        },
+        {
+            "name": "Travel Application",
+            "url": "https://travel.temenos.com"
+        },
+        {
+            "name": "T-Stars",
+            "url": "https://cloud.workhuman.com/microsites/t/home?client=temenos&setCAG=false"
+        },
+        {
+            "name": "Currency Exchange",
+            "url": "https://www.xe.com"
+        }
+    ]
+    for website in websites:
+        db.add(Website(
+            name=website["name"],
+            url=website["url"]
+        ))
     db.commit()
 
     #Seed BugReports
@@ -124,7 +140,7 @@ def seed_database():
                 "status": "Open",
                 "priority": "High",
                 "website": "People Space",
-                "reporter": "JamesLahiffeBaker"
+                "reporter": "JoeCooks"
             },
             {
                 "title": "Service desk form validation issue",
@@ -148,14 +164,14 @@ def seed_database():
                 "status": "Open",
                 "priority": "Medium",
                 "website": "Payroll Immedis",
-                "reporter": "KatySmith"
+                "reporter": "AmyWright"
             },
             {
                 "title": "Image upload fails in Yammer threads",
                 "description": "Users can't attach images in comments, error message says 'Unsupported format'.",
                 "status": "Open",
                 "priority": "Low",
-                "website": "Yammer",
+                "website": "IT Service Desk",
                 "reporter": "AlexConnor"
             },
             {
@@ -188,7 +204,7 @@ def seed_database():
                 "status": "In Progress",
                 "priority": "Low",
                 "website": "Currency Exchange",
-                "reporter": "JamesLahiffeBaker"
+                "reporter": "NeelJosh"
             },
             {
                 "title": "No error message when password is incorrect",
@@ -202,7 +218,7 @@ def seed_database():
         for bug in bug_reports:
             website = db.query(Website).filter(Website.name == bug["website"]).first()
             reporter = db.query(User).filter(User.username == bug["reporter"]).first()
-            report = BugReport(
+            db.add(BugReport(
                 title=bug["title"],
                 description=bug["description"],
                 status=bug["status"],
@@ -210,8 +226,7 @@ def seed_database():
                 website_id=website.website_id,
                 reported_by_user_id=reporter.user_id,
                 reported_at=datetime.utcnow()
-            )
-            db.add(report)
+            ))
         db.commit()
 
     #Seed BugComments
